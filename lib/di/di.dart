@@ -1,7 +1,7 @@
+import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ming/adapters/fake_pet_repository.dart';
-import 'package:ming/blocs/bloc/pet_feed_bloc.dart';
-import 'package:ming/models/pet_repository.dart';
+
+import '../feed/feed.dart';
 
 List<BlocProvider> blocProviders = [
   BlocProvider<PetFeedBloc>(
@@ -12,6 +12,7 @@ List<BlocProvider> blocProviders = [
 ];
 
 List<RepositoryProvider> repositoryProviers = [
-  // todo: change fake repository to actual implementation
-  RepositoryProvider<PetRepository>(create: (context) => FakePetRepository()),
+  RepositoryProvider<PetRepository>(create: (context) => petRepository),
+  RepositoryProvider<AuthenticationRepository>(
+      create: (context) => AuthenticationRepository()),
 ];
